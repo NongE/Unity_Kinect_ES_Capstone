@@ -8,3 +8,6 @@ Temp
 *.orig
 *.csproj
 Assets/UnityVS/
+Music/
+Graphics/
+Fonts/

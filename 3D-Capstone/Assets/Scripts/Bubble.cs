@@ -9,7 +9,6 @@ public class Bubble : MonoBehaviour
     private float time;
     public static int flag = 0;
 
-
     private void OnEnable()
     {
         mCurrentChanger = StartCoroutine(DirectionChanger());
@@ -32,7 +31,7 @@ public class Bubble : MonoBehaviour
         time += Time.deltaTime;
         if (time > 1.5f)
         {
-            transform.position = new Vector2(Random.Range(0.1f, 0), Random.Range(0, 0));
+            transform.position = new Vector3(0, 0, 0);
             // transform.position += mMovementDirection * Time.deltaTime * 0.5f;
             if (time > 5.0f)
             {
@@ -52,7 +51,7 @@ public class Bubble : MonoBehaviour
         while (gameObject.activeSelf)
         {
             //mMovementDirection = new Vector2(Random.Range(0, 50) * 0.01f, Random.Range(0, 50) * 0.01f);
-            mMovementDirection = new Vector2(0,0);
+            mMovementDirection = new Vector3(0,0,0);
             yield return new WaitForSeconds(3.0f);
         }
     }
