@@ -6,16 +6,27 @@ public class SelectMusicBtn : MonoBehaviour {
     private Button _button;
     private Color _color;
     public Image _testImage;
-	// Use this for initialization
-	void Start () {
+    private AudioSource audioSource;
+
+    // Use this for initialization
+    void Start () {
+        audioSource = GetComponent<AudioSource>();
         _button = GetComponent<Button>();
         _color = new Color(255, 255, 255);
-        GetComponent<Image>().color = _color;
+       // GetComponent<Image>().color = _color;
         _button.onClick.AddListener(() =>
         {
             //_testImage.color = _color;
-            SceneManager.LoadScene("MainScene");
+            audioSource.Play();
+            Invoke("clicked", 2f);
+            
         });
 	}
-	
+
+    private void clicked()
+    {
+
+        SceneManager.LoadScene("MainScene");
+    }
+
 }

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bubble : MonoBehaviour
+public class ManualBubble : MonoBehaviour
 {
     private Vector3 mMovementDirection = Vector3.zero;
     private Coroutine mCurrentChanger = null;
     private float time;
-    public static int flag = 0;
+    public static int flag;
 
     private void OnEnable()
     {
@@ -26,25 +26,17 @@ public class Bubble : MonoBehaviour
     }
 
 
+    void Awake()
+    {
+        flag = 0;
+    }
+
     private void Update()
     {
-        time += Time.deltaTime;
-        if (time > 1.5f)
-        {
-            transform.position = new Vector3(0, 0, 0);
-            // transform.position += mMovementDirection * Time.deltaTime * 0.5f;
-            if (time > 5.0f)
-            {
-                if (flag == 0)
-                {
-                    gameObject.SetActive(false);
-                    ScoreManager.score -= 5;
-                }
-            }
-
-       
-        }
         
+        transform.position = new Vector3(0, -1, 0);
+        // transform.position += mMovementDirection * Time.deltaTime * 0.5f;
+
 
     }
 
@@ -54,7 +46,7 @@ public class Bubble : MonoBehaviour
         while (gameObject.activeSelf)
         {
             //mMovementDirection = new Vector2(Random.Range(0, 50) * 0.01f, Random.Range(0, 50) * 0.01f);
-            mMovementDirection = new Vector3(0,0,0);
+            mMovementDirection = new Vector3(0, 0, 0);
             yield return new WaitForSeconds(3.0f);
         }
     }

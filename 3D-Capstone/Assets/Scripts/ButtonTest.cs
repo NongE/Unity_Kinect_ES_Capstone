@@ -34,7 +34,7 @@ public class ButtonTest : MonoBehaviour
             });
     }
 
-    void clicked()
+    private void clicked()
     {
 
         SceneManager.LoadScene("SelectStageScene");
