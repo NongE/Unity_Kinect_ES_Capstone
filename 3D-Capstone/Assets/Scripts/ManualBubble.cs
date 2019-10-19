@@ -7,7 +7,9 @@ public class ManualBubble : MonoBehaviour
     private Vector3 mMovementDirection = Vector3.zero;
     private Coroutine mCurrentChanger = null;
     private float time;
-    public static int flag;
+    public static int flag = 0;
+
+
 
     private void OnEnable()
     {
@@ -33,10 +35,25 @@ public class ManualBubble : MonoBehaviour
 
     private void Update()
     {
-        
-        transform.position = new Vector3(0, -1, 0);
-        // transform.position += mMovementDirection * Time.deltaTime * 0.5f;
+        Debug.Log(flag);
 
+        
+        if (flag == 0)
+        {
+            transform.position = new Vector3(0, 0, 0);
+        }
+        /*
+        // transform.position += mMovementDirection * Time.deltaTime * 0.5f;
+        else if (flag == 1 && ManualHand.activeFlag == 1)
+        {
+            transform.position = new Vector3(0, 4, 0);
+        }
+
+        else if (flag == 2 && ManualHand.activeFlag == 2)
+        {
+            transform.position = new Vector3(3, 0, 0);
+        }
+        */
 
     }
 

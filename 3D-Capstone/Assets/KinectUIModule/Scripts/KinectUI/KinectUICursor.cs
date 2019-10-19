@@ -38,5 +38,6 @@ public class KinectUICursor : AbstractKinectUICursor
             _image.color = normalColor;
         }
         _image.transform.localScale = _initScale;
+        
     }
 }

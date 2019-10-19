@@ -10,14 +10,15 @@ public class ButtonTest : MonoBehaviour
 
     private Button _button;
     private Color _color;
-    public Image _testImage;
+    //public Image _testImage;
     private AudioSource audioSource;
-
+    public GameObject obj;
 
 
     // Use this for initialization
     void Start()
     {
+        
 
         _button = GetComponent<Button>();
         audioSource = GetComponent<AudioSource>();
@@ -25,18 +26,19 @@ public class ButtonTest : MonoBehaviour
         GetComponent<Image>().color = _color;
         _button.onClick.AddListener(() =>
         {
+            _button.gameObject.SetActive(false);
+            Instantiate(obj, new Vector3(0, -3,5), Quaternion.identity);
+            audioSource.Play();
 
-          
-                 audioSource.Play();
-                 Invoke("clicked", 2f);
+            Invoke("clicked", 2f);
 
-               // _testImage.color = _color;
-            });
+            // _testImage.color = _color;
+        });
     }
 
     private void clicked()
     {
-
+        
         SceneManager.LoadScene("SelectStageScene");
     }
 

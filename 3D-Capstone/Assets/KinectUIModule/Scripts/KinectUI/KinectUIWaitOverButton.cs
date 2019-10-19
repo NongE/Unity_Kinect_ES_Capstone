@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class KinectUIWaitOverButton : MonoBehaviour {
 
-
+  
     // Use this for initialization
     void Start ()
     {
@@ -15,5 +15,6 @@ public class KinectUIWaitOverButton : MonoBehaviour {
         {
             transform.GetChild(i).gameObject.AddComponent<KinectUIWaitOverButton>();
         }
-	}
+       
+    }
 }
