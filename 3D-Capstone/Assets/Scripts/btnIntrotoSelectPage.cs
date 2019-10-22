@@ -3,8 +3,8 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
-public class ButtonTest : MonoBehaviour
+public class btnIntrotoSelectPage : MonoBehaviour
+//public class ButtonTest : MonoBehaviour
 {
     ///
 

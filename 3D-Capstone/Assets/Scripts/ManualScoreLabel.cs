@@ -16,6 +16,6 @@ public class ManualScoreLabel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        manualScoreLable.text = "Test Your Score! "+ManualScoreManager.manualScore.ToString();
+        manualScoreLable.text = "Your Score! "+ManualScoreManager.manualScore.ToString();
     }
 }
