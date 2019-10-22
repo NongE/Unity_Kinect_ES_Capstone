@@ -35,12 +35,11 @@ public class ManualBubble : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(flag);
 
-        
+     
         if (flag == 0)
         {
-            transform.position = new Vector3(0, 0, 0);
+           // transform.position = new Vector3(0, 0, 0);
         }
         /*
         // transform.position += mMovementDirection * Time.deltaTime * 0.5f;
