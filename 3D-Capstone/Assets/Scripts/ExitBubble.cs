@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bubble : MonoBehaviour
+public class ExitBubble : MonoBehaviour
 {
     private Vector3 mMovementDirection = Vector3.zero;
     private Coroutine mCurrentChanger = null;
-    private float time;
-    public static int flag = 0;
+   
 
     private void OnEnable()
     {
@@ -28,23 +27,9 @@ public class Bubble : MonoBehaviour
 
     private void Update()
     {
-
-        time += Time.deltaTime;
-        if (time > 1.5f)
-        {
-            transform.position = new Vector3(0, 0, 0);
-            // transform.position += mMovementDirection * Time.deltaTime * 0.5f;
-            if (time > 5.0f)
-            {
-                if (flag == 0)
-                {
-                    gameObject.SetActive(false);
-                    ScoreManager.score -= 5;
-                }
-            }
-
-
-        }
+        transform.position = new Vector3(6, -3, 0);
+       
+        
 
     }
 

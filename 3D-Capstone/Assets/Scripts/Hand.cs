@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class Hand : MonoBehaviour
 {
@@ -11,13 +12,21 @@ public class Hand : MonoBehaviour
  
     private void Update()
     {
-
+        
         mHandMesh.position = Vector3.Lerp(mHandMesh.position, transform.position, Time.deltaTime*15.0f);
 
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+
+        if (collision.gameObject.CompareTag("ExitBubble") == true)
+        {
+            Debug.Log(ManualScoreManager.manualScore.ToString());
+            SceneManager.LoadScene("IntroScene");
+        }
+
         if (!collision.gameObject.CompareTag("Bubble"))
             return;
 
@@ -28,10 +37,10 @@ public class Hand : MonoBehaviour
 
             ScoreManager.score += 10;
             Bubble.flag = 1;
-            
+
 
             collision.gameObject.SetActive(false);
-            
+
             // obj.SecActive(false);
         }
 

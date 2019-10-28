@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement; 
+using UnityEngine.SceneManagement;
 
 public class ManualHand : MonoBehaviour
 {
@@ -18,16 +18,16 @@ public class ManualHand : MonoBehaviour
     public static int activeFlag = 0; // 플래그의 숫자에 따라 가이드 순서 결정
     //public int hintFlag = 0; // 
 
-
+    Vector3 pos;
     private void Update()
     {
 
-        hint = GameObject.Find("TouchHere").GetComponent<Text>(); // 가이드 문구에 텍스트 오브젝트를 찾아 저장
+        hint = GameObject.Find("ManualTxt").GetComponent<Text>(); // 가이드 문구에 텍스트 오브젝트를 찾아 저장
+
         time += Time.deltaTime; // 시간 시작
         mHandMesh.position = Vector3.Lerp(mHandMesh.position, transform.position, Time.deltaTime * 15.0f); // 손 추적
 
-
-        if (time > 4.0f && time < 6.5f ) // 4.5~6.5초 사이
+     if (time > 4.0f && time < 6.5f) // 4.5~6.5초 사이
         {
             hint.GetComponent<Text>().text = "양팔을 벌려보세요!"; // 문구 변경
         }
@@ -67,12 +67,12 @@ public class ManualHand : MonoBehaviour
             hint.GetComponent<Text>().text = "마지막이에요!";
             GameObject.Find("Canvas").transform.Find("ManualBubble").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.Find("ManualBubble").gameObject.transform.position = new Vector2(3, 3);
-           
+
         }
 
         else if (activeFlag == 3) // 메뉴얼 완료
         {
-            GameObject.FindWithTag("FadeOut").SendMessage("StartFadeAnim");
+            GameObject.Find("ManualLogoFadeOut").SendMessage("StartFadeAnim");
             activeFlag++;
             Invoke("clicked", 2f);
         }
@@ -92,8 +92,8 @@ public class ManualHand : MonoBehaviour
 
         else
         {
-
-            Instantiate(obj, mHandMesh.position, Quaternion.identity);
+            pos = GameObject.Find("ManualBubble").transform.position;
+            Instantiate(obj, pos, Quaternion.identity);
 
             ManualScoreManager.manualScore += 10;
             activeFlag++;
@@ -103,8 +103,8 @@ public class ManualHand : MonoBehaviour
             mb.gameObject.SetActive(false);
             hint.GetComponent<Text>().text = "좋아요!";
 
-            
-   
+
+
 
 
         }

@@ -25,5 +25,6 @@ public class ManualBackgroundRepeat : MonoBehaviour
         // Y부분에 현재 y값에 속도에 프레임 보정을 해서 더해줍니다.
         thisMaterial.mainTextureOffset = newOffset;
         //그리고 최종적으로 Offset값을 지정해줍니다.
+
     }
 }

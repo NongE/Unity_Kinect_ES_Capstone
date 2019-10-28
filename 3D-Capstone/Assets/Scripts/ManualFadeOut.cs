@@ -4,14 +4,14 @@ using System.Collections;
 
 namespace RonnieJ.Coroutine
 {
-    public class LogoFadeIn : MonoBehaviour
+    public class ManualFadeOut : MonoBehaviour
     {
         public float animTime = 2f;         // Fade 애니메이션 재생 시간 (단위:초).  
 
         private RawImage fadeImage;            // UGUI의 Image컴포넌트 참조 변수.  
 
-        private float start = 1f;           // Mathf.Lerp 메소드의 첫번째 값.  
-        private float end = 0f;             // Mathf.Lerp 메소드의 두번째 값.  
+        private float start = 0f;           // Mathf.Lerp 메소드의 첫번째 값.  
+        private float end = 1f;             // Mathf.Lerp 메소드의 두번째 값.  
         private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.  
 
         private bool isPlaying = false;     // Fade 애니메이션의 중복 재생을 방지하기위해서 사용.  
@@ -19,7 +19,7 @@ namespace RonnieJ.Coroutine
         void Awake()
         {
             // Image 컴포넌트를 검색해서 참조 변수 값 설정.  
-            fadeImage = GetComponent<RawImage>();
+            fadeImage = GameObject.Find("RawImage").GetComponent<RawImage>();
         }
 
         // Fade 애니메이션을 시작시키는 메소드.  
@@ -44,7 +44,7 @@ namespace RonnieJ.Coroutine
             time = 0f;
             color.a = Mathf.Lerp(start, end, time);
 
-            while (color.a > 0f)
+            while (color.a < 1f)
             {
                 // 경과 시간 계산.  
                 // 2초(animTime)동안 재생될 수 있도록 animTime으로 나누기.  
@@ -60,7 +60,6 @@ namespace RonnieJ.Coroutine
 
             // 애니메이션 재생 완료.  
             isPlaying = false;
-            fadeImage.gameObject.SetActive(false);
         }
     }
 }
