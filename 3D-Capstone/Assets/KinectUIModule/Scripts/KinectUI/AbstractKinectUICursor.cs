@@ -30,9 +30,13 @@ public abstract class AbstractKinectUICursor : MonoBehaviour {
 
     public virtual void Update()
     {
+
         if (_data == null || !_data.IsTracking) return;
         ProcessData();
     }
 
+    
+
     public abstract void ProcessData();
+   
 }

@@ -42,8 +42,8 @@ public class ManualHand : MonoBehaviour
 
         else if (time > 10.0f && activeFlag == 0) // 첫번째 메뉴얼 시작
         {
-            hint.transform.position = new Vector2(960, 540);
-            hint.GetComponent<Text>().text = "여기에 손을 가져와보세요!";
+            hint.transform.position = new Vector2(0, 0);
+            hint.GetComponent<Text>().text = "중앙으로 손을 가져와보세요!";
             GameObject.Find("Canvas").transform.Find("ManualBubble").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.Find("ManualBubble").gameObject.transform.position = new Vector2(0, 0);
         }

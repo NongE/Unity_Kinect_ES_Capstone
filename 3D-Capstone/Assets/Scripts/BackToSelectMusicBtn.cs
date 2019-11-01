@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class SelectMusicBtn : MonoBehaviour {
+public class BackToSelectMusicBtn : MonoBehaviour {
     private Button _button;
     private Color _color;
     public Image _testImage;
@@ -26,7 +26,7 @@ public class SelectMusicBtn : MonoBehaviour {
     private void clicked()
     {
 
-        SceneManager.LoadScene("Stage1Scene");
+        SceneManager.LoadScene("SelectStageScene");
     }
 
 }

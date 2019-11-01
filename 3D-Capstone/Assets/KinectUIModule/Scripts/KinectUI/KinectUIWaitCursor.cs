@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class KinectUIWaitCursor : AbstractKinectUICursor {
+public class KinectUIWaitCursor : AbstractKinectUICursor
+{
 
 
     public override void Start()
@@ -13,12 +14,12 @@ public class KinectUIWaitCursor : AbstractKinectUICursor {
         _image.fillMethod = Image.FillMethod.Radial360;
         _image.fillAmount = 0f;
     }
-
+   
     public override void ProcessData()
     {
         // update pos
         transform.position = _data.GetHandScreenPosition();
-        if(_data.IsHovering)
+        if (_data.IsHovering)
         {
             _image.fillAmount = _data.WaitOverAmount;
         }

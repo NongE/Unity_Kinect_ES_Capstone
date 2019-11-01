@@ -198,6 +198,8 @@ public class KinectInputModule : BaseInputModule
         }
         return null;
     }
+
+    
 }
 [System.Serializable]
 public class KinectInputData
@@ -224,11 +226,13 @@ public class KinectInputData
     // Hovering Gameobject getter setter, needed for WaitOver like clicking detection
     public GameObject HoveringObject
     {
-        get { return _hoveringObject; }
+        get {
+            return _hoveringObject; }
         set
         {
             if (value != _hoveringObject)
             {
+                
                 HoverTime = Time.time;
                 _hoveringObject = value;
                 if (_hoveringObject == null) return;
@@ -300,6 +304,7 @@ public class KinectInputData
     {
         return new Vector3(joint.Position.X * 10, joint.Position.Y * 10, joint.Position.Z * 10);
     }
+
 }
 
 public enum KinectUIClickGesture
