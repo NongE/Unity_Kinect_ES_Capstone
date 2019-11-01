@@ -11,7 +11,10 @@ public class ManualNote : MonoBehaviour
     private float time; // 시간 관련
     public GameObject touchEffect;
     private int effectFlag = 0;
-
+    Vector3 rightHand;
+    Vector3 pos1;
+    Vector3 leftHand;
+    Vector3 pos2;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +26,8 @@ public class ManualNote : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rightHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Right").transform.position;
+        leftHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Left").transform.position;
 
         time += Time.deltaTime; // 시간 시작
         //Debug.Log(ManualKinectUICursor.activeFlag);
@@ -33,18 +38,18 @@ public class ManualNote : MonoBehaviour
         {
             hint.GetComponent<Text>().text = "양팔을 벌려보세요!"; // 문구 변경
         }
-        else if (time > 6.5f && time < 9.0f)
+        else if ((time > 6.5f && time < 10.0f) && (rightHand.y != leftHand.y))
         {
 
-            Vector3 rightHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Right").transform.position;
-            Vector3 pos1;
+            rightHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Right").transform.position;
+          
             pos1.x = (rightHand.x - 960) / 100;
             pos1.y = (rightHand.y - 540) / 100;
             pos1.z = -1;
 
 
-            Vector3 leftHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Left").transform.position;
-            Vector3 pos2;
+            leftHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Left").transform.position;
+        
             pos2.x = (leftHand.x - 960) / 100;
             pos2.y = (leftHand.y - 540) / 100;
             pos2.z = -1;
