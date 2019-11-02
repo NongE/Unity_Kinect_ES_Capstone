@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class SelectMusicBtn : MonoBehaviour {
+public class SelectStage4Btn : MonoBehaviour {
     private Button _button;
     private Color _color;
     public Image _testImage;
@@ -18,6 +18,7 @@ public class SelectMusicBtn : MonoBehaviour {
         {
             //_testImage.color = _color;
             audioSource.Play();
+            StageNum.stageNum = 4;
             Invoke("clicked", 2f);
             
         });

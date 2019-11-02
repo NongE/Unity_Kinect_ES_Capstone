@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MainBackgroundRepeat : MonoBehaviour
+public class Stage1BackgroundRepeat : MonoBehaviour
 {
 
     public float scrollSpeed;
@@ -11,7 +11,7 @@ public class MainBackgroundRepeat : MonoBehaviour
     //Quad의 Material 데이터를 받아올 객체를 선언합니다.
     void Start()
     {
-
+        Debug.Log(StageNum.stageNum);
         //객체가 생성될때 최초 1회만 호출 되는 함수 입니다.
         thisMaterial = GetComponent<Renderer>().material;
         //현재 객체의 Component들을 참조해 Renderer라는 컴포넌트의 Material정보를 받아옵니다.
