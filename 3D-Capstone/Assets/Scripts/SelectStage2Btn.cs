@@ -27,7 +27,7 @@ public class SelectStage2Btn : MonoBehaviour {
     private void clicked()
     {
 
-        SceneManager.LoadScene("Stage1Scene");
+        SceneManager.LoadScene("Stage2Scene");
     }
 
 }

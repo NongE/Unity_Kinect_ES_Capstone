@@ -42,14 +42,14 @@ public class ManualNote : MonoBehaviour
         {
 
             rightHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Right").transform.position;
-          
+
             pos1.x = (rightHand.x - 960) / 100;
             pos1.y = (rightHand.y - 540) / 100;
             pos1.z = -1;
 
 
             leftHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Left").transform.position;
-        
+
             pos2.x = (leftHand.x - 960) / 100;
             pos2.y = (leftHand.y - 540) / 100;
             pos2.z = -1;
@@ -59,45 +59,54 @@ public class ManualNote : MonoBehaviour
             {
                 Instantiate(touchEffect, pos1, Quaternion.identity, GameObject.Find("Canvas").transform);
                 Instantiate(touchEffect, pos2, Quaternion.identity, GameObject.Find("Canvas").transform);
+                effectFlag++; // 플래그 수치 변경으로 중복으로 이펙트가 발생하지 않도록 설정
             }
-            effectFlag++; // 플래그 수치 변경으로 중복으로 이펙트가 발생하지 않도록 설정
+
 
             hint.GetComponent<Text>().text = "잘했어요!";
         }
 
+        if (time >= 10.0f && (rightHand.y != leftHand.y) && (rightHand.x != leftHand.x) && effectFlag == 0)
+        {
+            effectFlag += 1;
+        }
 
-        else if (time > 10.0f && ManualKinectUICursor.activeFlag == 0) // 첫번째 메뉴얼 시작
+
+        if (time > 10.0f && ManualKinectUICursor.activeFlag == 0 && effectFlag == 1) // 첫번째 메뉴얼 시작
         {
 
             hint.transform.position = new Vector2(960, 590); // 중앙
             hint.GetComponent<Text>().text = "여기에 손을 가져와보세요!";
+            Debug.Log("첫번째 노트");
             GameObject.Find("Canvas").transform.Find("GameObject").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.Find("GameObject").gameObject.transform.position = new Vector2(960, 540); // 중앙
         }
 
 
-        if (ManualKinectUICursor.activeFlag == 1) // 두번째 메뉴얼 시작
+        else if (ManualKinectUICursor.activeFlag == 1 && effectFlag == 1) // 두번째 메뉴얼 시작
         {
 
             hint.transform.position = new Vector2(1300, 790); //오른쪽 상단
             hint.GetComponent<Text>().text = "이번에는 여기에요!";
+            Debug.Log("두번째 노트");
             GameObject.Find("Canvas").transform.Find("GameObject").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.Find("GameObject").gameObject.transform.position = new Vector2(1300, 740); //오른쪽 상단
 
 
 
         }
-        else if (ManualKinectUICursor.activeFlag == 2) // 세번째 메뉴얼 시작
+        else if (ManualKinectUICursor.activeFlag == 2 && effectFlag == 1) // 세번째 메뉴얼 시작
         {
 
             hint.transform.position = new Vector2(560, 390); //좌측 상단
             hint.GetComponent<Text>().text = "마지막이에요!";
+            Debug.Log("세번째 노트");
             GameObject.Find("Canvas").transform.Find("GameObject").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.Find("GameObject").gameObject.transform.position = new Vector2(560, 340); //좌측 상단
 
         }
 
-        else if (ManualKinectUICursor.activeFlag == 3) // 메뉴얼 완료
+        else if (ManualKinectUICursor.activeFlag == 3 && effectFlag == 1) // 메뉴얼 완료
         {
             hint.transform.position = new Vector2(960, 590); // 중앙
             hint.GetComponent<Text>().text = "여기에 손을 올리면 버튼을 누를 수 있어요!";

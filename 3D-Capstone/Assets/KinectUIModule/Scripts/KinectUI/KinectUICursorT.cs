@@ -30,7 +30,7 @@ public class KinectUICursorT : AbstractKinectUICursor
     {
 
        
-        if (!collision.gameObject.CompareTag("Bubble"))
+        if (!collision.gameObject.CompareTag("Note"))
         {
        
             return;

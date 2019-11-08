@@ -61,25 +61,27 @@ public class ManualKinectUICursor : AbstractKinectUICursor
         }
         else
         {
-           
-            
-            Vector3 pos = (collision.bounds.center);
-          
+            Vector3 rightHand;
+            Vector3 leftHand;
 
-            Vector3 tmp;
-            tmp.x = (pos.x - 960)/100;
-            tmp.y = (pos.y - 540) / 100;
-            tmp.z = 0;
+            rightHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Right").transform.position;
+            leftHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Left").transform.position;
+            if ((rightHand.x != leftHand.x) && (rightHand.y != leftHand.y))
+            {
+                Vector3 pos = (collision.bounds.center);
+                Vector3 tmp;
+                tmp.x = (pos.x - 960) / 100;
+                tmp.y = (pos.y - 540) / 100;
+                tmp.z = 0;
 
-            Instantiate(touchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
-     
+                Instantiate(touchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
+                ManualScoreManager.manualScore += 10;
+                activeFlag++;
 
+                Debug.Log("노트와 충돌발생");
 
-            ManualScoreManager.manualScore += 10;
-            activeFlag++;
-
-            //Debug.Log("충돌, 버블임");
-            collision.gameObject.SetActive(false);
+                collision.gameObject.SetActive(false);
+            }
 
             // obj.SecActive(false);
         }
