@@ -6,41 +6,42 @@ using Kinect = Windows.Kinect;
 public class BodySourceView : MonoBehaviour
 {
     public Material BoneMaterial;
+    private int trackingFlag = 0;
 
     private Dictionary<ulong, GameObject> _Bodies = new Dictionary<ulong, GameObject>();
     private BodySourceManager _BodyManager;
 
     private Dictionary<Kinect.JointType, Kinect.JointType> _BoneMap = new Dictionary<Kinect.JointType, Kinect.JointType>()
     {
-       // { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
-       // { Kinect.JointType.AnkleLeft, Kinect.JointType.KneeLeft },
-       // { Kinect.JointType.KneeLeft, Kinect.JointType.HipLeft },
-       // { Kinect.JointType.HipLeft, Kinect.JointType.SpineBase },
-       //
-       // { Kinect.JointType.FootRight, Kinect.JointType.AnkleRight },
-       // { Kinect.JointType.AnkleRight, Kinect.JointType.KneeRight },
-       // { Kinect.JointType.KneeRight, Kinect.JointType.HipRight },
-       // { Kinect.JointType.HipRight, Kinect.JointType.SpineBase },
-       //
-       // { Kinect.JointType.HandTipLeft, Kinect.JointType.HandLeft },
-       // { Kinect.JointType.ThumbLeft, Kinect.JointType.HandLeft },
-       // { Kinect.JointType.HandLeft, Kinect.JointType.WristLeft },
-       // { Kinect.JointType.WristLeft, Kinect.JointType.ElbowLeft },
-       // { Kinect.JointType.ElbowLeft, Kinect.JointType.ShoulderLeft },
-       // { Kinect.JointType.ShoulderLeft, Kinect.JointType.SpineShoulder },
-       //
-       // { Kinect.JointType.HandTipRight, Kinect.JointType.HandRight },
-       // { Kinect.JointType.ThumbRight, Kinect.JointType.HandRight },
-       // { Kinect.JointType.HandRight, Kinect.JointType.WristRight },
-       // { Kinect.JointType.WristRight, Kinect.JointType.ElbowRight },
-       // { Kinect.JointType.ElbowRight, Kinect.JointType.ShoulderRight },
-       // { Kinect.JointType.ShoulderRight, Kinect.JointType.SpineShoulder },
-       //
-       // { Kinect.JointType.SpineBase, Kinect.JointType.SpineMid },
-       // { Kinect.JointType.SpineMid, Kinect.JointType.SpineShoulder },
-       // { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
-       // { Kinect.JointType.Neck, Kinect.JointType.Head },
-       { Kinect.JointType.HandRight, Kinect.JointType.HandLeft }
+        { Kinect.JointType.FootLeft, Kinect.JointType.AnkleLeft },
+        { Kinect.JointType.AnkleLeft, Kinect.JointType.KneeLeft },
+        { Kinect.JointType.KneeLeft, Kinect.JointType.HipLeft },
+        { Kinect.JointType.HipLeft, Kinect.JointType.SpineBase },
+       
+        { Kinect.JointType.FootRight, Kinect.JointType.AnkleRight },
+        { Kinect.JointType.AnkleRight, Kinect.JointType.KneeRight },
+        { Kinect.JointType.KneeRight, Kinect.JointType.HipRight },
+        { Kinect.JointType.HipRight, Kinect.JointType.SpineBase },
+       
+        { Kinect.JointType.HandTipLeft, Kinect.JointType.HandLeft },
+        { Kinect.JointType.ThumbLeft, Kinect.JointType.HandLeft },
+        { Kinect.JointType.HandLeft, Kinect.JointType.WristLeft },
+        { Kinect.JointType.WristLeft, Kinect.JointType.ElbowLeft },
+        { Kinect.JointType.ElbowLeft, Kinect.JointType.ShoulderLeft },
+        { Kinect.JointType.ShoulderLeft, Kinect.JointType.SpineShoulder },
+       
+        { Kinect.JointType.HandTipRight, Kinect.JointType.HandRight },
+        { Kinect.JointType.ThumbRight, Kinect.JointType.HandRight },
+        { Kinect.JointType.HandRight, Kinect.JointType.WristRight },
+        { Kinect.JointType.WristRight, Kinect.JointType.ElbowRight },
+        { Kinect.JointType.ElbowRight, Kinect.JointType.ShoulderRight },
+        { Kinect.JointType.ShoulderRight, Kinect.JointType.SpineShoulder },
+       
+        { Kinect.JointType.SpineBase, Kinect.JointType.SpineMid },
+        { Kinect.JointType.SpineMid, Kinect.JointType.SpineShoulder },
+        { Kinect.JointType.SpineShoulder, Kinect.JointType.Neck },
+        { Kinect.JointType.Neck, Kinect.JointType.Head },
+      // { Kinect.JointType.HandRight, Kinect.JointType.HandLeft }
     };
     void Start()
     {
@@ -48,7 +49,7 @@ public class BodySourceView : MonoBehaviour
     }
     void Update()
     {
-
+        
         if (_BodyManager == null)
         {
             return;
@@ -59,7 +60,7 @@ public class BodySourceView : MonoBehaviour
         {
             return;
         }
-
+        //인물 한명만 잡아내기 의심
         List<ulong> trackedIds = new List<ulong>();
         foreach (var body in data)
         {
@@ -73,7 +74,7 @@ public class BodySourceView : MonoBehaviour
                 trackedIds.Add(body.TrackingId);
             }
         }
-
+        
         List<ulong> knownIds = new List<ulong>(_Bodies.Keys);
 
         // First delete untracked bodies
@@ -85,7 +86,7 @@ public class BodySourceView : MonoBehaviour
                 _Bodies.Remove(trackingId);
             }
         }
-
+        //의심
         foreach (var body in data)
         {
             if (body == null)

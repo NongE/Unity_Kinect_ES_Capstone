@@ -16,6 +16,6 @@ public class ScoreLabel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreLable.text = "Your"+"\nScore! "+ScoreManager.score.ToString();
+        scoreLable.text = "Score: "+ScoreManager.score.ToString();
     }
 }

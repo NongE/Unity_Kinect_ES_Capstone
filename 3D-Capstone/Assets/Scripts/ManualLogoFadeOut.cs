@@ -19,12 +19,15 @@ namespace RonnieJ.Coroutine
         void Awake()
         {
             // Image 컴포넌트를 검색해서 참조 변수 값 설정.  
-            fadeImage = GetComponent<RawImage>();
+            
+            gameObject.SetActive(false);
         }
 
         // Fade 애니메이션을 시작시키는 메소드.  
         public void StartFadeAnim()
         {
+            GameObject.Find("Canvas").transform.Find("ManualLogoFadeOut").gameObject.SetActive(true);
+            fadeImage = GetComponent<RawImage>();
             // 애니메이션이 재생중이면 중복 재생되지 않도록 리턴 처리.  
             if (isPlaying == true)
                 return;

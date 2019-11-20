@@ -5,10 +5,13 @@ using UnityEngine;
 public class ManualBackgroundRepeat : MonoBehaviour
 {
 
-    public float scrollSpeed;
+    public static float scrollSpeed;
+
     //스크롤할 속도를 로 지정해 줍니다.
     private Material thisMaterial;
     //Quad의 Material 데이터를 받아올 객체를 선언합니다.
+
+
     void Start()
     {
 

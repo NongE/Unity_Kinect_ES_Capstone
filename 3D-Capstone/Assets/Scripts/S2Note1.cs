@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Note1 : MonoBehaviour
+public class S2Note1 : MonoBehaviour
 {
     private float time;
 
@@ -20,19 +20,19 @@ public class Note1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        time += Time.deltaTime;
-        if (time > 1.5f)
+
+        if (Stage2BackgroundRepeat.audioSource.time > 2.5f)
         {
-           
+
             GameObject.Find("Canvas").transform.Find("Note1").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.Find("Note1").gameObject.transform.position = new Vector3(660, 440, 0);
 
         }
 
-        if (time > 3.0f)
+        if (Stage2BackgroundRepeat.audioSource.time > 3.5f)
         {
-            HPManager.hitFlag+=10 ;
+
+            Stage2HPManager.hitFlag+=10 ;
             gameObject.SetActive(false);
         }
     }

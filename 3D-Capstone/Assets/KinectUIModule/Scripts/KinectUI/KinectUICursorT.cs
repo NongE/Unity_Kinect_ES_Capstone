@@ -26,10 +26,11 @@ public class KinectUICursorT : AbstractKinectUICursor
         _image.color = new Color(1f, 1f, 1f, 0f);
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter(Collider collision)
     {
 
-       
+   
+
         if (!collision.gameObject.CompareTag("Note"))
         {
        
@@ -37,10 +38,9 @@ public class KinectUICursorT : AbstractKinectUICursor
         }
         else
         {
-            //coll.contacts[0].point;
            
+            
             Vector3 pos = (collision.bounds.center);
-           // Debug.Log(collision.bounds.center.x);
 
             Vector3 tmp;
             tmp.x = (pos.x - 960)/100;
@@ -50,12 +50,23 @@ public class KinectUICursorT : AbstractKinectUICursor
             Instantiate(touchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
 
 
-            ScoreManager.score += 10;
-            Bubble.flag = 1;
+            //ScoreManager.score += 10;
+            //Bubble.flag = 1;
 
-            //Debug.Log("충돌, 버블임");
+            float tmpCountSize = collision.gameObject.GetComponent<testSphere>().countSize;
+            if (tmpCountSize <= 3.0f && tmpCountSize > 2.5f)
+            {
+                ScoreManager.score += 5;
+            }
+            else if (tmpCountSize <= 2.5f && tmpCountSize > 1.0f)
+            {
+                ScoreManager.score += 10;
+            }
+            else if (tmpCountSize <= 1.0f)
+            {
+                ScoreManager.score += 1;
+            }
             collision.gameObject.SetActive(false);
-
             // obj.SecActive(false);
         }
 

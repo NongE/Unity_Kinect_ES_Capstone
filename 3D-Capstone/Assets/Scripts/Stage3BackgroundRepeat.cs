@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Stage1BackgroundRepeat : MonoBehaviour
+public class Stage3BackgroundRepeat : MonoBehaviour
 {
 
     public float scrollSpeed;
