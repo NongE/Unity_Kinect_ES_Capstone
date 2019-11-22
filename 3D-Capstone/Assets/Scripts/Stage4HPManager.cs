@@ -21,8 +21,8 @@ public class Stage4HPManager : MonoBehaviour
 
         if (hitFlag > 0)
         {
-            hpBar.value -=0.5f;
-            hitFlag -= 0.5f;
+            hpBar.value -= 1.0f;
+            hitFlag -= 1.0f;
             if (hpBar.value <= 0)
             {
                 Stage4BackgroundRepeat.audioSource.Stop();
@@ -30,6 +30,11 @@ public class Stage4HPManager : MonoBehaviour
                 audioSource.Play();
                 Invoke("gameOver", 2f);
             }
+        }
+        else if (hitFlag < 0)
+        {
+            hpBar.value += 1.0f;
+            hitFlag += 1.0f;
         }
     }
 

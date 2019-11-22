@@ -17,7 +17,7 @@ public class KinectUICursorT : AbstractKinectUICursor
     private Vector3 _initScale;
 
     public GameObject touchEffect;
-
+    public GameObject healTouchEffect;
 
     public override void Start()
     {
@@ -33,8 +33,26 @@ public class KinectUICursorT : AbstractKinectUICursor
 
         if (!collision.gameObject.CompareTag("Note"))
         {
-       
-            return;
+            if (!collision.gameObject.CompareTag("HealNote"))
+            {
+                return;
+            }
+            else {
+
+                Vector3 pos = (collision.bounds.center);
+
+                Vector3 tmp;
+                tmp.x = (pos.x - 960) / 100;
+                tmp.y = (pos.y - 540) / 100;
+                tmp.z = -1;
+
+                Instantiate(healTouchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
+
+                ScoreManager.score += 10;
+                Stage4HPManager.hitFlag -= 10;
+                Destroy(collision.gameObject);
+                
+            }
         }
         else
         {
@@ -45,8 +63,8 @@ public class KinectUICursorT : AbstractKinectUICursor
             Vector3 tmp;
             tmp.x = (pos.x - 960)/100;
             tmp.y = (pos.y - 540) / 100;
-            tmp.z = 0;
-
+            tmp.z = -1;
+            touchEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             Instantiate(touchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
 
 
@@ -66,8 +84,9 @@ public class KinectUICursorT : AbstractKinectUICursor
             {
                 ScoreManager.score += 1;
             }
-            collision.gameObject.SetActive(false);
-            // obj.SecActive(false);
+            //collision.gameObject.SetActive(false);
+            
+            Destroy(collision.gameObject);
         }
 
     }

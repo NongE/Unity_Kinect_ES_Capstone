@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class btnIntrotoSelectPage : MonoBehaviour
+public class btnIntrotoManualPage : MonoBehaviour
 //public class ButtonTest : MonoBehaviour
 {
     ///
@@ -40,7 +40,7 @@ public class btnIntrotoSelectPage : MonoBehaviour
     private void clicked()
     {
         
-        SceneManager.LoadScene("SelectStageScene");
+        SceneManager.LoadScene("ManualScene");
     }
 
 

@@ -14,7 +14,11 @@ public class Stage4BackgroundRepeat : MonoBehaviour
 
     private int noteCount = 1;
 
-    public GameObject obj;
+    public GameObject DamageObj;
+    public GameObject HealObj;
+
+    public float timer;
+    private int playFlag = 0;
 
 
     void Start()
@@ -28,7 +32,14 @@ public class Stage4BackgroundRepeat : MonoBehaviour
 
         void Update()
     {
-        //Debug.Log(audioSource.time);
+        timer += Time.deltaTime; // 시간 시작
+        if (timer > 3 && playFlag == 0)
+        {
+            audioSource.Play();
+            playFlag = 1;
+        }
+       // Debug.Log("현재 타이머: "+ timer);
+        Debug.Log(audioSource.time);
 
         Vector2 newOffset = thisMaterial.mainTextureOffset;
         // 새롭게 지정해줄 OffSet 객체를 선언합니다.
@@ -40,24 +51,40 @@ public class Stage4BackgroundRepeat : MonoBehaviour
 
         if (audioSource.time >= 2.0f && noteCount == 1)
         {
-            Instantiate(obj, new Vector3(860 ,540,0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(DamageObj, new Vector3(960 ,540,0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
         if (audioSource.time >= 2.5f && noteCount == 2)
         {
-            Instantiate(obj, new Vector3(1360, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(DamageObj, new Vector3(660, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
         if (audioSource.time >= 2.7f && noteCount == 3)
         {
-            Instantiate(obj, new Vector3(1460, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(DamageObj, new Vector3(1260, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
         if (audioSource.time >= 3.0f && noteCount == 4)
         {
-            Instantiate(obj, new Vector3(1560, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(DamageObj, new Vector3(960, 240, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
+        if (audioSource.time >= 6.5f && noteCount == 5)
+        {
+            Instantiate(DamageObj, new Vector3(1560, 740, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            noteCount++;
+        }
+        if (audioSource.time >= 6.5f && noteCount == 6)
+        {
+            Instantiate(DamageObj, new Vector3(1560, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            noteCount++;
+        }
+        if (audioSource.time >= 9.0f && noteCount == 7)
+        {
+            Instantiate(HealObj, new Vector3(960, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            noteCount++;
+        }
+   
 
     }
 }

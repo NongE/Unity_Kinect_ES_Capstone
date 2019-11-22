@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: c8260d15cb31d3d49a251f7cdb4d1777
+guid: a6f26bae1ec0ce142a4fe9fb6fc714f8
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Explosion_0
-    21300002: Explosion_1
-    21300004: Explosion_2
-    21300006: Explosion_3
+    21300000: PExplosion_0
+    21300002: PExplosion_1
+    21300004: PExplosion_2
+    21300006: PExplosion_3
   externalObjects: {}
   serializedVersion: 9
   mipmaps:
@@ -31,16 +31,16 @@ TextureImporter:
   generateCubemap: 6
   cubemapConvolution: 0
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: 1
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -100
     wrapU: 1
     wrapV: 1
-    wrapW: 1
+    wrapW: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -54,7 +54,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -73,31 +73,53 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Explosion_0
+      name: PExplosion_0
       rect:
         serializedVersion: 2
         x: 0
         y: 512
         width: 512
         height: 512
-      alignment: 8
-      pivot: {x: 1, y: 0}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5d1b744d47109a348ba0dda7e517aef1
+      spriteID: bea4b737044e72141a6657d33276d1e1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explosion_1
+      name: PExplosion_1
       rect:
         serializedVersion: 2
         x: 512
@@ -109,15 +131,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5dc33255ddf041a418b1ae050b308b91
+      spriteID: 760135f8db6c69141b85faa447133e89
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explosion_2
+      name: PExplosion_2
       rect:
         serializedVersion: 2
         x: 0
@@ -129,15 +151,15 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 14ff79ff1c1891546a14e6d3cf9c60be
+      spriteID: c1f756e576464054fbdff60f651648a4
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Explosion_3
+      name: PExplosion_3
       rect:
         serializedVersion: 2
         x: 512
@@ -149,17 +171,21 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 40cd460d01c25494bba52a6c48245c73
+      spriteID: 454b8bccf946d434fba95ffcf9a964a1
       vertices: []
       indices: 
       edges: []
       weights: []
     outline: []
-    physicsShape: []
+    physicsShape:
+    - - {x: -512, y: 512}
+      - {x: -512, y: -512}
+      - {x: 512, y: -512}
+      - {x: 512, y: 512}
     bones: []
-    spriteID: e635c33083fe260478f9988cc305b249
+    spriteID: a6157b0a8bfe8f14a97d5a203ee98b4a
     vertices: []
     indices: 
     edges: []
