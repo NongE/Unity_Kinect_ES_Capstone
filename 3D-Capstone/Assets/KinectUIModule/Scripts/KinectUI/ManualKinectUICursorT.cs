@@ -7,7 +7,7 @@ using UnityEditor;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class KinectUICursorT : AbstractKinectUICursor
+public class ManualKinectUICursorT : AbstractKinectUICursor
 {
     public Color normalColor = new Color(1f, 1f, 1f, 0.5f);
     public Color hoverColor = new Color(1f, 1f, 1f, 1f);
@@ -49,7 +49,7 @@ public class KinectUICursorT : AbstractKinectUICursor
                 Instantiate(healTouchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
 
                 ScoreManager.score += 10;
-                HPManager.hitFlag -= 10;
+                HPManager.hitFlag -= 50;
                 Destroy(collision.gameObject);
                 
             }
@@ -70,21 +70,9 @@ public class KinectUICursorT : AbstractKinectUICursor
 
             //ScoreManager.score += 10;
             //Bubble.flag = 1;
-            
-            float tmpCountSize = collision.gameObject.GetComponent<testSphere>().countSize;
-            if (tmpCountSize <= 3.0f && tmpCountSize > 2.5f)
-            {
-                ScoreManager.score += 5;
-            }
-            else if (tmpCountSize <= 2.5f && tmpCountSize > 1.0f)
-            {
-                ScoreManager.score += 10;
-            }
-            else if (tmpCountSize <= 1.0f)
-            {
-                ScoreManager.score += 1;
-            }
-            //collision.gameObject.SetActive(false);
+   
+           ScoreManager.score += 10;
+          
             
             Destroy(collision.gameObject);
         }

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;   //UGUI에 접근하려면 추가
 using UnityEngine.SceneManagement;
 
-public class Stage2HPManager : MonoBehaviour
+public class HPManager : MonoBehaviour
 {
     public static float hitFlag = 0;
     public Slider hpBar;
@@ -21,15 +21,20 @@ public class Stage2HPManager : MonoBehaviour
 
         if (hitFlag > 0)
         {
-            hpBar.value -=0.5f;
-            hitFlag -= 0.5f;
+            hpBar.value -= 1.0f;
+            hitFlag -= 1.0f;
             if (hpBar.value <= 0)
             {
-                Stage2BackgroundRepeat.audioSource.Stop();
+                Stage4BackgroundRepeat.audioSource.Stop();
                 GameObject.Find("Fade Out").SendMessage("StartFadeAnim");
                 audioSource.Play();
                 Invoke("gameOver", 2f);
             }
+        }
+        else if (hitFlag < 0)
+        {
+            hpBar.value += 1.0f;
+            hitFlag += 1.0f;
         }
     }
 

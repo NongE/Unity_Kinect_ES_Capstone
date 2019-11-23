@@ -27,12 +27,13 @@ public class catmove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (bgY < 0)
         {
             time += Time.deltaTime; // 시간 시작
             if (time > 1.5f)
             {
-                GameObject.Find("ManualBackgound").gameObject.transform.position = new Vector3(bgX, bgY, bgZ); // 중앙
+                GameObject.Find("BackgroundRepeat").gameObject.transform.position = new Vector3(bgX, bgY, bgZ); // 중앙
                 bgY += 0.03f;
             }
 
@@ -50,7 +51,7 @@ public class catmove : MonoBehaviour
             bgY = 0;
             if (time > 1.0f)
             {
-                ManualBackgroundRepeat.scrollSpeed = 0.05f;
+                BackgroundRepeat.scrollSpeed = 0.05f;
                 //GameObject.Find("ManualBackgound").gameObject.transform.position = new Vector3(bgX, bgY, bgZ); // 중앙
                 GameObject.Find("Canvas").transform.Find("Cat").gameObject.transform.position = new Vector3(catX, catY, catZ); // 중앙
                 catX += 0.03f;
@@ -76,4 +77,5 @@ public class catmove : MonoBehaviour
     {
         SceneManager.LoadScene("IntroScene");
     }
+    
 }

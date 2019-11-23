@@ -8,12 +8,12 @@ using UnityEngine.SceneManagement;
 
 
 
-public class testSphere : MonoBehaviour
+public class ManualtestSphere : MonoBehaviour
 {
 
     public float countSize;
 
-    public float animTime = 1.0f;         // Fade 애니메이션 재생 시간 (단위:초).  
+    public float animTime = 2.0f;         // Fade 애니메이션 재생 시간 (단위:초).  
     private float start = 0f;           // Mathf.Lerp 메소드의 첫번째 값.  
     private float end = 1f;             // Mathf.Lerp 메소드의 두번째 값.  
     private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.  
@@ -64,49 +64,16 @@ public class testSphere : MonoBehaviour
             getCountRing.GetComponent<RawImage>().color = color;
 
             getCountRing.transform.localScale = new Vector2(countSize, countSize);
-            countSize -= 0.02f;
+            countSize -= 0.025f;
 
             yield return null;
         }
 
         // 애니메이션 재생 완료.  
         isPlaying = false;
-
-
+        
+       // Destroy(gameObject);
     }
-
-    void Update()
-    {
-        if (countSize <= 0.1f && isPlaying == false)
-        {
-
-            Invoke("destoryObj",0.3f);
-           
-        }
-        else if(countSize >= 0.1f && isPlaying == false)
-        {
-            getCountRing.transform.localScale = new Vector2(countSize, countSize);
-            countSize -= 0.02f;
-        }
-
-    }
-
-    void destoryObj()
-    {
-        Vector3 pos = transform.position;
-        Vector3 tmp;
-        tmp.x = (pos.x - 960) / 100;
-        tmp.y = (pos.y - 540) / 100;
-        tmp.z = -1f;
-
-        Instantiate(brokenHeartEffect, tmp, Quaternion.identity);
-
-        ScoreManager.score -= 10;
-        HPManager.hitFlag += 10;
-        Destroy(gameObject);
-    }
-
-
     /*
 
     // Update is called once per frame

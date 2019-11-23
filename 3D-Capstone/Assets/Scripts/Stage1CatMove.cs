@@ -5,7 +5,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class Stage4CatMove : MonoBehaviour
+public class Stage1CatMove : MonoBehaviour
 {
     float time;
     float catX = -4.8f;
@@ -26,7 +26,7 @@ public class Stage4CatMove : MonoBehaviour
     {
 
         GameObject.Find("Canvas").transform.Find("Cat").gameObject.transform.position = new Vector3(catX, catY, catZ); // 중앙
-        if (Stage4BackgroundRepeat.audioSource.time != 0)
+        if (Stage1BackgroundRepeat.audioSource.time != 0)
         {
 
             catX += 0.0015f;
