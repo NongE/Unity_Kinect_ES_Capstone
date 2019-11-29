@@ -19,6 +19,10 @@ public class KinectUICursorT : AbstractKinectUICursor
     public GameObject touchEffect;
     public GameObject healTouchEffect;
 
+    public static int maxCombo =0;
+    public static int comboCount = 0;
+    public static int healCombo = 0;
+
     public override void Start()
     {
         base.Start();
@@ -46,11 +50,21 @@ public class KinectUICursorT : AbstractKinectUICursor
                 tmp.y = (pos.y - 540) / 100;
                 tmp.z = -1;
 
-                Instantiate(healTouchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
 
-                ScoreManager.score += 10;
-                HPManager.hitFlag -= 10;
-                Destroy(collision.gameObject);
+                float tmpCountSize = collision.gameObject.GetComponent<HealNote>().countSize;
+                if (tmpCountSize <= 3.0f && tmpCountSize >= 2.0f)
+                {
+                    return;
+                }
+                else //if (tmpCountSize < 1.9f)
+                {
+                    Instantiate(healTouchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
+                    ScoreManager.score += 10;
+                    HPManager.hitFlag -= 10;
+                    comboCount++;
+                    healCombo++;
+                    Destroy(collision.gameObject);
+                }
                 
             }
         }
@@ -64,29 +78,41 @@ public class KinectUICursorT : AbstractKinectUICursor
             tmp.x = (pos.x - 960)/100;
             tmp.y = (pos.y - 540) / 100;
             tmp.z = -1;
-            touchEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-            Instantiate(touchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
+            
 
-
+            
             //ScoreManager.score += 10;
             //Bubble.flag = 1;
             
             float tmpCountSize = collision.gameObject.GetComponent<testSphere>().countSize;
-            if (tmpCountSize <= 3.0f && tmpCountSize > 2.5f)
+            if (tmpCountSize <= 3.0f && tmpCountSize >= 2.0f)
             {
-                ScoreManager.score += 5;
+                return;
             }
-            else if (tmpCountSize <= 2.5f && tmpCountSize > 1.0f)
+            else if (tmpCountSize < 2.0f && tmpCountSize >= 1.0f)
             {
                 ScoreManager.score += 10;
+                touchEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                Instantiate(touchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
+                comboCount++;
+                Destroy(collision.gameObject);
             }
-            else if (tmpCountSize <= 1.0f)
+            else if (tmpCountSize < 1.0f)
             {
-                ScoreManager.score += 1;
+                ScoreManager.score += 5;
+                touchEffect.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+                Instantiate(touchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
+                comboCount++;
+                Destroy(collision.gameObject);
             }
             //collision.gameObject.SetActive(false);
             
-            Destroy(collision.gameObject);
+            
+        }
+
+        if (comboCount > maxCombo)
+        {
+            maxCombo = comboCount;
         }
 
     }

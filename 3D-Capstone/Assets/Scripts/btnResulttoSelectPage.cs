@@ -12,18 +12,18 @@ public class btnResulttoSelectPage : MonoBehaviour
     private Color _color;
     //public Image _testImage;
     private AudioSource audioSource;
-   
+
 
 
     // Use this for initialization
     void Start()
     {
-        
+
 
         _button = GetComponent<Button>();
         audioSource = GetComponent<AudioSource>();
         _color = new Color(255, 255, 255);
-        GetComponent<Image>().color = _color;
+        //GetComponent<Image>().color = _color;
         _button.onClick.AddListener(() =>
         {
             audioSource.Play();

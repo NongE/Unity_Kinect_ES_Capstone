@@ -3,19 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ClearStageTxt : MonoBehaviour
+public class MaxCombo : MonoBehaviour
 {
 
-    Text clearStageTxt;
+    Text maxComboTxt;
 
     void Awake()
     {
-        clearStageTxt = GetComponent<Text>();
+        maxComboTxt = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        clearStageTxt.text = "스테이지 "+ StageNum.stageNum.ToString() +" 클리어!";
+        maxComboTxt.text = KinectUICursorT.maxCombo.ToString();
     }
 }

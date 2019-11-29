@@ -22,6 +22,6 @@ public class ClearStagePoint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        clearStagePoint.text = "획득 점수: " + ScoreManager.score +" 점";
+        clearStagePoint.text = ScoreManager.score.ToString();
     }
 }

@@ -12,7 +12,7 @@ public class btnIntrotoSelectPage : MonoBehaviour
     private Color _color;
     //public Image _testImage;
     private AudioSource audioSource;
-    public GameObject obj;
+
 
 
     // Use this for initialization
@@ -23,7 +23,7 @@ public class btnIntrotoSelectPage : MonoBehaviour
         _button = GetComponent<Button>();
         audioSource = GetComponent<AudioSource>();
         _color = new Color(255, 255, 255);
-        GetComponent<Image>().color = _color;
+        //GetComponent<Image>().color = _color;
         _button.onClick.AddListener(() =>
         {
             audioSource.Play();

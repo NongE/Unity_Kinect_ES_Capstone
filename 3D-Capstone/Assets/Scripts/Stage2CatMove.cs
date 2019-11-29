@@ -15,6 +15,8 @@ public class Stage2CatMove : MonoBehaviour
 
     int catFlag = 0;
 
+    public float catMoveSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,7 @@ public class Stage2CatMove : MonoBehaviour
         if (Stage2BackgroundRepeat.audioSource.time != 0)
         {
 
-            catX += 0.0013f;
+            catX += catMoveSpeed;
         }
 
 

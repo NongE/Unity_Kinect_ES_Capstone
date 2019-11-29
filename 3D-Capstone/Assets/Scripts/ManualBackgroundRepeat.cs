@@ -60,8 +60,7 @@ public class ManualBackgroundRepeat : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("시간은"+time);
-        Debug.Log("ManualCount은" + ManualCount);
+ 
         time += Time.deltaTime; // 시간 시작
         rightHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Right").transform.position;
         leftHand = GameObject.Find("Canvas").transform.Find("Image_Hand_Left").transform.position;
@@ -112,7 +111,7 @@ public class ManualBackgroundRepeat : MonoBehaviour
         if (time > 2.0f && ManualCount == 3)
         {
             noteHint.GetComponent<Text>().text = "이번에는 초록색 링을 가진 노트를 쳐보세요!";
-            Instantiate(HealObj, new Vector3(960, 360, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(HealObj, new Vector3(960, 760, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             ManualCount++;
         }
 
@@ -123,18 +122,10 @@ public class ManualBackgroundRepeat : MonoBehaviour
             ManualCount++;
         }
 
-        if (time > 2.0f && ManualCount == 5)
-        {
-            noteHint.GetComponent<Text>().text = "아래 고양이를 통해 게임 진행 상태를 확인 할 수 있어요!";
-            
-            ManualCount++;
-            time = 0;
-        }
-
-        if (time > 4.0f && ManualCount == 6)
+        if (time > 4.0f && ManualCount == 5)
         {
             noteHint.GetComponent<Text>().text = "버튼에 손을 올려두면 버튼을 누를 수 있어요!";
-            Instantiate(HealObj, new Vector3(960, 340, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            //Instantiate(HealObj, new Vector3(960, 340, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             GameObject.Find("Canvas").transform.Find("ManualToIntroBtn").gameObject.SetActive(true);
             GameObject.Find("Canvas").transform.Find("ManualToIntroBtn").gameObject.transform.position = new Vector2(960, 340);
             ManualCount++;

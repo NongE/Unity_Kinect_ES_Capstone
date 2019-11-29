@@ -15,6 +15,8 @@ public class Stage1CatMove : MonoBehaviour
 
     int catFlag = 0;
 
+    public float catMoveSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,11 +27,11 @@ public class Stage1CatMove : MonoBehaviour
     void Update()
     {
 
-        GameObject.Find("Canvas").transform.Find("Cat").gameObject.transform.position = new Vector3(catX, catY, catZ); // 중앙
+        gameObject.transform.position = new Vector3(catX, catY, catZ); // 중앙
         if (Stage1BackgroundRepeat.audioSource.time != 0)
         {
 
-            catX += 0.0015f;
+            catX += catMoveSpeed;
         }
 
 

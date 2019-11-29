@@ -69,5 +69,7 @@ public class ResultSceneClearEffect : MonoBehaviour
         t.y = y;
         t.z = z;
         Instantiate(effect, t, Quaternion.identity);//, GameObject.Find("Canvas").transform);
+        Debug.Log("maxcombo Count is "+KinectUICursorT.maxCombo);
+        Debug.Log("healnote Count is " + KinectUICursorT.healCombo);
     }
 }

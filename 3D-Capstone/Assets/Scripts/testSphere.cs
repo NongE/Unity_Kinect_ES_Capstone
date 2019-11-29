@@ -79,7 +79,7 @@ public class testSphere : MonoBehaviour
     {
         if (countSize <= 0.1f && isPlaying == false)
         {
-
+            
             Invoke("destoryObj",0.3f);
            
         }
@@ -103,6 +103,7 @@ public class testSphere : MonoBehaviour
 
         ScoreManager.score -= 10;
         HPManager.hitFlag += 10;
+        KinectUICursorT.comboCount = 0;
         Destroy(gameObject);
     }
 

@@ -11,15 +11,20 @@ public class ManualProgressBar : MonoBehaviour
 
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        progressBar.value = ManualBackgroundRepeat.audioSource.time;
+        if (Stage1BackgroundRepeat.audioSource.time != 0)
+        {
+            progressBar.value = Stage1BackgroundRepeat.audioSource.time;
+
+        }
 
 
     }
+
 
 }

@@ -9,5 +9,8 @@ public class StageNum : MonoBehaviour
     void Awake()
     {
         stageNum = 0;
+        KinectUICursorT.maxCombo = 0;
+        KinectUICursorT.healCombo = 0;
+        KinectUICursorT.comboCount = 0;
     }
 }

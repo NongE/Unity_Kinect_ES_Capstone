@@ -10,7 +10,7 @@ public class HealNote : MonoBehaviour
 
     public float countSize;
 
-    public float animTime = 2.0f;         // Fade 애니메이션 재생 시간 (단위:초).  
+    public float animTime = 1.0f;         // Fade 애니메이션 재생 시간 (단위:초).  
     private float start = 0f;           // Mathf.Lerp 메소드의 첫번째 값.  
     private float end = 1f;             // Mathf.Lerp 메소드의 두번째 값.  
     private float time = 0f;            // Mathf.Lerp 메소드의 시간 값.  
@@ -58,7 +58,7 @@ public class HealNote : MonoBehaviour
             getCountRing.GetComponent<RawImage>().color = color;
 
             getCountRing.transform.localScale = new Vector2(countSize, countSize);
-            countSize -= 0.025f;
+            countSize -= 0.02f;
 
             yield return null;
         }
@@ -87,6 +87,7 @@ public class HealNote : MonoBehaviour
 
     void destoryObj()
     {
+        KinectUICursorT.comboCount = 0;
         Destroy(gameObject);
     }
 

@@ -25,7 +25,7 @@ public class HPManager : MonoBehaviour
             hitFlag -= 1.0f;
             if (hpBar.value <= 0)
             {
-                Stage4BackgroundRepeat.audioSource.Stop();
+                audioSource.Stop();
                 GameObject.Find("Fade Out").SendMessage("StartFadeAnim");
                 audioSource.Play();
                 Invoke("gameOver", 2f);
@@ -40,6 +40,6 @@ public class HPManager : MonoBehaviour
 
     void gameOver()
     {
-        SceneManager.LoadScene("ResultScene");
+        SceneManager.LoadScene("FailResultScene");
     }
 }
