@@ -26,6 +26,15 @@ public class Stage1BackgroundRepeat : MonoBehaviour
     private int clearFlag = 0;
 
 
+    public GameObject colorMat;
+    private int matFlag = 0;
+    private float colorMatPos = -1920.0f;
+
+    public Text introText;
+
+    public AudioSource loadingSound;
+    private int soundFlag = 0;
+
     void Start()
     {
         Debug.Log(StageNum.stageNum);
@@ -37,11 +46,66 @@ public class Stage1BackgroundRepeat : MonoBehaviour
 
     void Update()
     {
-        timer += Time.deltaTime; // 시간 시작
-        if (timer > 3 && playFlag == 0)
+       // timer += Time.deltaTime; // 시간 시작
+        
+        if (colorMatPos < 960 && matFlag == 0)
         {
-            audioSource.Play();
-            playFlag = 1;
+            colorMatPos += 50.0f;
+            if (soundFlag == 0 && colorMatPos > 50.0f)
+            {
+                loadingSound.Play();
+                soundFlag = 1;
+            }
+            if (colorMatPos >= 960.0f)
+            {
+                colorMatPos = 960;
+                matFlag = 1;
+            }
+            colorMat.transform.position = new Vector2(colorMatPos, 540);
+        }
+
+        if (matFlag == 1)
+        {
+            timer += Time.deltaTime; // 시간 시작
+
+            if (timer > 0.5f)
+            {
+                GameObject.Find("Canvas").transform.Find("InfroText").gameObject.SetActive(true);
+            }
+
+            if (timer > 2.5f)
+            {
+                if (colorMatPos < 3820.0f)
+                {
+                    colorMatPos += 50.0f;
+                    colorMat.transform.position = new Vector2(colorMatPos, 540);
+                    introText.transform.position = new Vector2(colorMatPos, 540);
+                    if (colorMatPos >= 3820.0f)
+                    {
+
+                        matFlag = 2;
+                        timer = 0.0f;
+                    }
+                }
+            }
+        }
+
+
+        if (matFlag == 2 && playFlag == 0)
+        {
+            
+            timer += Time.deltaTime; // 시간 시작
+            
+            //colorMat.gameObject.SetActive(false);
+            //
+
+            if (timer > 1.5f)
+            {
+                audioSource.Play();
+                playFlag = 1;
+                Destroy(colorMat);
+                Destroy(introText.gameObject);
+            }
         }
 
         if (audioSource.time >= musicTime && clearFlag == 0)
