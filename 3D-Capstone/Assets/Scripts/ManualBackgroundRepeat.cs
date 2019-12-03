@@ -117,7 +117,7 @@ public class ManualBackgroundRepeat : MonoBehaviour
 
         if (ScoreManager.score == 30 && ManualCount == 4)
         {
-            noteHint.GetComponent<Text>().text = "초록색 링을 가진 노트를 터트리면 체력이 회복되요!";
+            noteHint.GetComponent<Text>().text = "초록색 링을 가진 노트를 터트리면 체력이 회복돼요!";
             time = 0;
             ManualCount++;
         }

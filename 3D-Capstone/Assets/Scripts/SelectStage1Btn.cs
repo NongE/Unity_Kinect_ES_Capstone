@@ -14,7 +14,7 @@ public class SelectStage1Btn : MonoBehaviour
     private float waitTimer;
     public int currentIndex = 0;
 
-    string infoText = "자네, 프리미어는 좀 다룰 줄 아는가?"+"\n\n"+"-신문방송학과-";
+    string infoText = "자네, 프리미어는 좀 다룰 줄 아는가?"+"\n\n"+"- 신문방송학과 -";
     private string typewriterText;
     public Text textInfo;
 

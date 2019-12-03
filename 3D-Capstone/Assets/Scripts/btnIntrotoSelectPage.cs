@@ -28,8 +28,8 @@ public class btnIntrotoSelectPage : MonoBehaviour
         {
             audioSource.Play();
             //_button.gameObject.SetActive(false);
-            GameObject.Find("Canvas").transform.Find("StartBtn").gameObject.transform.position = new Vector2(-30, -30);
-            GameObject.Find("Canvas").transform.Find("ManualBtn").gameObject.transform.position = new Vector2(-30, -30);
+            GameObject.Find("Canvas").transform.Find("StartBtn").gameObject.transform.position = new Vector2(-100, -100);
+            GameObject.Find("Canvas").transform.Find("ManualBtn").gameObject.transform.position = new Vector2(-100, -100);
             //Instantiate(obj, new Vector3(0, -3,5), Quaternion.identity);
             Invoke("clicked", 2f);
 

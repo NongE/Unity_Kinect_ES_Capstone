@@ -14,7 +14,7 @@ public class SelectStage2Btn : MonoBehaviour
     private float waitTimer;
     public int currentIndex = 0;
 
-    string infoText = "체육학과 체육학과 체육학과" + "\n\n" + "-체육학과-";
+    string infoText = "구기 종목 중에 배구를 해본 사람 있나?" + "\n\n" + "- 체육학과 -";
     private string typewriterText;
     public Text textInfo;
 

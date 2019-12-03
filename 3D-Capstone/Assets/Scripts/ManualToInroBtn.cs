@@ -29,8 +29,8 @@ public class ManualToInroBtn : MonoBehaviour {
 
     private void clicked()
     {
-        
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("SelectStageScene");
+        //SceneManager.LoadScene("IntroScene");
     }
 
 }

@@ -56,11 +56,19 @@ public class KinectUICursorT : AbstractKinectUICursor
                 {
                     return;
                 }
-                else //if (tmpCountSize < 1.9f)
+                else if (tmpCountSize < 2.0f && tmpCountSize >= 0.9f)
                 {
                     Instantiate(healTouchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
                     ScoreManager.score += 10;
                     HPManager.hitFlag -= 10;
+                    comboCount++;
+                    healCombo++;
+                    Destroy(collision.gameObject);
+                }
+                else {
+                    Instantiate(healTouchEffect, tmp, Quaternion.identity, GameObject.Find("Canvas").transform);
+                    ScoreManager.score += 5;
+                    HPManager.hitFlag -= 5;
                     comboCount++;
                     healCombo++;
                     Destroy(collision.gameObject);

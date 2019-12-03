@@ -70,7 +70,7 @@ public class Stage1BackgroundRepeat : MonoBehaviour
 
             if (timer > 0.5f)
             {
-                GameObject.Find("Canvas").transform.Find("InfroText").gameObject.SetActive(true);
+                GameObject.Find("Canvas").transform.Find("IntroText").gameObject.SetActive(true);
             }
 
             if (timer > 2.5f)
@@ -160,7 +160,7 @@ public class Stage1BackgroundRepeat : MonoBehaviour
         if (audioSource.time >= 6.32f && noteCount == 6)
         {
             Debug.Log(noteCount);
-            Instantiate(HealObj, new Vector3(660, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(DamageObj, new Vector3(660, 540, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
         if (audioSource.time >= 6.32f && noteCount == 7)
@@ -194,7 +194,7 @@ public class Stage1BackgroundRepeat : MonoBehaviour
         if (audioSource.time >= 13.861f && noteCount == 10)
         {
             Debug.Log(noteCount);
-            Instantiate(HealObj, new Vector3(660, 340, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(DamageObj, new Vector3(660, 340, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
         // 13
@@ -307,7 +307,7 @@ public class Stage1BackgroundRepeat : MonoBehaviour
         if (audioSource.time >= 28.966f && noteCount == 26)
         {
             Debug.Log(noteCount);
-            Instantiate(DamageObj, new Vector3(760, 440, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(HealObj, new Vector3(760, 440, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
         //27
@@ -542,7 +542,7 @@ public class Stage1BackgroundRepeat : MonoBehaviour
         if (audioSource.time >= 55.39f && noteCount == 58)
         {
             Debug.Log(noteCount);
-            Instantiate(DamageObj, new Vector3(660, 650, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
+            Instantiate(HealObj, new Vector3(660, 650, 0), Quaternion.identity, GameObject.Find("Canvas").transform);
             noteCount++;
         }
         if (audioSource.time >= 55.69f && noteCount == 59)
