@@ -43,8 +43,7 @@ Kinect Studio 실행 → Capstone.exe 실행 → Graphics quality 'Good' 이상 
 
 
 
-#
-활용된 라이브러리, 소스
+#활용된 라이브러리, 소스
 =================
 이하 내용은 '세종팡팡' 개발 중 활용된 라이브러리, 소스(Asset 등) 내용입니다.
 
